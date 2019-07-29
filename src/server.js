@@ -44,7 +44,7 @@ app.use(allowCrossDomain);
 
 
 app.get('/urls', function (req, res) {
-    connection.connect();
+    // connection.connect();
     let sql = `SELECT * FROM URLTable`;
     connection.query(sql, function (error, results, fields) {
         if (error) throw error;
@@ -52,7 +52,7 @@ app.get('/urls', function (req, res) {
         res.send(results);
     });
 
-    connection.end();
+    // connection.end();
 });
 
 // Start the server
