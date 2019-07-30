@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import URLCard from './card.js'
 import { SlowBuffer } from 'buffer';
+const mysql = require('mysql');
+
 // import appActions from 'actions/appActions.js'
 
 // function App() {
@@ -51,6 +53,12 @@ class App extends Component {
     console.log(event.target.value);
   }
 
+  onSubmit (event) {
+    console.log(event.target.value);
+    // makeApiCal
+    // .then(setState)
+  }
+
   render(){
     // let arr = this.state.urlArr;
     // arr = arr.map((url, i) => {
@@ -59,16 +67,19 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Enter URL to scrape below!</h1>
-        <input type="text" onChange = {this.handle.bind(this)}/>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <input type="text" onChange = {this.handle.bind(this)}/>
+          <button type="submit">Scrape</button>
+        </form>
 
         {/* {this.state.urlArr.map((url, i) => <li>
           <p key={i}>{url.link}</p>
           <p key={i}>{url.status}</p>
         </li>)} */}
-
-        {this.state.urlArr.map((url, i) => 
-        <URLCard key={i} url={url.link} status={url.status}/>)}
-        
+        <div style={{}}>
+          {this.state.urlArr.map((url, i) => 
+          <URLCard key={i} url={url.link} status={url.status}/>)}
+        </div>
       </div>
     );
   }
@@ -92,6 +103,10 @@ class App extends Component {
     .catch(error => console.log('Request failed', error)  
     );
 
+  }
+
+  componentDidUpdate() {
+    const temp = this.state.urlArr
   }
 }
 
