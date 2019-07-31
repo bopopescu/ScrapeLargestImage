@@ -2,11 +2,13 @@ const express = require('express');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "URLStore"
+  host: "urlstorage.cuujnc1vkyie.us-west-1.rds.amazonaws.com",
+  user: "darren",
+  password: "charityfuntila",
+  database: "urlstorage"
 });
+
+
 
 const app = express();
 
@@ -36,16 +38,12 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
-// app.configure(function() {
-//     app.use(allowCrossDomain);
-//     //some other code
-// }); 
 app.use(allowCrossDomain);
 
 
 app.get('/urls', function (req, res) {
     // connection.connect();
-    let sql = `SELECT * FROM URLTable`;
+    let sql = `SELECT * FROM urlstore`;
     connection.query(sql, function (error, results, fields) {
         if (error) throw error;
         results = JSON.stringify(results);
@@ -56,6 +54,6 @@ app.get('/urls', function (req, res) {
 });
 
 // Start the server
-app.listen(3002, () => {
- console.log('Go to http://localhost:3002/urls to see urls');
+app.listen(3003, () => {
+ console.log('Go to http://localhost:3003/urls to see urls');
 });

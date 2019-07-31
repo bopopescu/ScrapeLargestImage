@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-
 class URLCard extends React.Component {
     constructor(props){
         super(props);
+        this.id = props.id;
         this.url = props.url;
         this.status = props.status;
+        this.showModal = props.showModal;
     }
     render() {
         return (
@@ -18,10 +19,10 @@ class URLCard extends React.Component {
                     <Card.Text>
                         <b>Status:</b> {this.status}
                     </Card.Text>
-                    <Button variant="primary">Details</Button>
+                    <Button variant="primary" value={this.url} id={this.id} onClick={this.showModal}>Details</Button>
                     </Card.Body>
-            </Card>
-          </div>
+                </Card>
+            </div>
         );
     }
   }

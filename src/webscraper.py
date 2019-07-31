@@ -70,3 +70,38 @@ cursor.execute(add_url, result)
 connection.commit()
 cursor.close()
 connection.close()
+
+
+'''
+def urlInsert(event, context):
+
+    # connection = mysql.connector.connect(
+    # host= "localhost", user= "root", password= "password", database= "URLStore", auth_plugin='mysql_native_password')
+
+    # connection = pymysql.connect(db='URLStore', user='root', passwd='password', host='localhost')
+    rds_host  = "urlstorage.cuujnc1vkyie.us-west-1.rds.amazonaws.com"
+    name = "darren"
+    password = "charityfuntila"
+    db_name = "urlstorage"
+    connection = pymysql.connect(rds_host, user=name, passwd=password, db=db_name)
+
+
+
+    # # cursor = connection.cursor(buffered=True)
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT * FROM urlstore")
+    records = cursor.fetchall()
+    print(records)
+
+    # # connection.commit()
+    # cursor.close()
+    connection.close()
+
+    return {
+        'statusCode': 200,
+        'body': event
+    }
+
+
+'''
