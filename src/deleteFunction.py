@@ -1,3 +1,5 @@
+# Deletion of URL Lambda Function
+
 import pymysql
 
 def deleteFromDB(event, context):

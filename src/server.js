@@ -1,3 +1,5 @@
+// Express server that hosts MySQL DB information in JSON format that will be fetched from App.js
+
 const express = require('express');
 const mysql = require('mysql');
 

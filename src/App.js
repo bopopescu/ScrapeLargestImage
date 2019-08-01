@@ -1,3 +1,5 @@
+// React Single Application that gets rendered in index.js
+
 import React, {Component} from 'react';
 import './App.css';
 import URLCard from './card.js'
