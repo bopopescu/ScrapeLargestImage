@@ -4,10 +4,12 @@ import { Card, Button } from 'react-bootstrap';
 class URLCard extends React.Component {
     constructor(props){
         super(props);
-        this.id = props.id;
-        this.url = props.url;
-        this.status = props.status;
-        this.showModal = props.showModal;
+        this.state = {
+            id: props.id,
+            url: props.url,
+            status: props.status,
+            showModal: props.showModal
+        }
     }
     render() {
         return (
@@ -15,16 +17,20 @@ class URLCard extends React.Component {
                 <Card style={{ width: '18rem' }}>
                     {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                     <Card.Body>
-                    <Card.Title>{this.url}</Card.Title>
+                    <Card.Title>{this.state.url}</Card.Title>
                     <Card.Text>
-                        <b>Status:</b> {this.status}
+                        <b>Status:</b> {this.state.status}
                     </Card.Text>
-                    <Button variant="primary" value={this.url} id={this.id} onClick={this.showModal}>Details</Button>
+                    <Button variant="primary" value={this.state.url} id={this.state.id} onClick={this.state.showModal}>Details</Button>
                     </Card.Body>
                 </Card>
             </div>
         );
     }
-  }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({id: nextProps.id, url: nextProps.url, status: nextProps.status });   
+    }
+}
 
   export default URLCard;
